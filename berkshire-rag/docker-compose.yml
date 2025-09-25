@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      - POSTGRES_DB=mastra
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mastra
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PORT=4111
+      - VECTOR_DIM=1536
+      - EMBEDDING_MODEL=text-embedding-3-small
+      - LLM_MODEL=gpt-4o
+    ports:
+      - "4111:4111"
+    depends_on:
+      - db
+volumes:
+  db_data:
+
+
+

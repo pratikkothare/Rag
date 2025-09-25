@@ -1,0 +1,34 @@
+{
+  "name": "berkshire-rag",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/server/app.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server/app.js",
+    "ingest": "tsx scripts/ingest.ts",
+    "test": "tsx tests/smoke.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mastra": "^0.2.7",
+    "openai": "^4.57.0",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.12.0",
+    "pgvector": "^0.1.8",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "@types/ws": "^8.5.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
+
+
